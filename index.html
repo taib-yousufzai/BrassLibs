@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brass Space Interior - Applications</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .app-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .app-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .app-card h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .app-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .app-badge {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 40px;
+        }
+
+        .status {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .status h3 {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏢 Brass Space Interior</h1>
+            <p>Professional Interior Design Applications Suite</p>
+        </div>
+
+        <div class="status">
+            <h3>⚠️ Deployment in Progress</h3>
+            <p>Each application needs to be deployed separately. Please deploy each app individually to access them.</p>
+        </div>
+
+        <div class="apps-grid">
+            <a href="https://brass-quotation.vercel.app" class="app-card" target="_blank">
+                <div class="app-icon">🧾</div>
+                <h2>Quotation Builder</h2>
+                <p>Create and manage professional quotations with optimized PDF exports (3-5 MB)</p>
+                <span class="app-badge">Deploy to Access</span>
+            </a>
+
+            <a href="https://brass-library.vercel.app" class="app-card" target="_blank">
+                <div class="app-icon">📸</div>
+                <h2>Photo Library</h2>
+                <p>Organize and share interior design photos with advanced management features</p>
+                <span class="app-badge">Deploy to Access</span>
+            </a>
+
+            <a href="https://brass-moodboard.vercel.app" class="app-card" target="_blank">
+                <div class="app-icon">🎨</div>
+                <h2>Mood Board Builder</h2>
+                <p>Create stunning mood boards with drag-and-drop interface and optimized exports</p>
+                <span class="app-badge">Deploy to Access</span>
+            </a>
+        </div>
+
+        <div class="footer">
+            <p>Built with ❤️ by Brass Space Interior</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                <a href="https://github.com/taib-yousufzai/BrassLibs" style="color: white; text-decoration: underline;">View on GitHub</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Update badges based on deployment status
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.app-card');
+            
+            cards.forEach(card => {
+                const url = card.getAttribute('href');
+                const badge = card.querySelector('.app-badge');
+                
+                // Try to check if the app is deployed
+                fetch(url, { mode: 'no-cors' })
+                    .then(() => {
+                        badge.textContent = 'Open App →';
+                        badge.style.background = '#10b981';
+                    })
+                    .catch(() => {
+                        badge.textContent = 'Deploy to Access';
+                        badge.style.background = '#ef4444';
+                    });
+            });
+        });
+    </script>
+</body>
+</html>

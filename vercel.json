@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "brass-space-portal",
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/index.html"
+    }
+  ]
+}
